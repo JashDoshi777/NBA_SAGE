@@ -1,212 +1,151 @@
-🏀 NBA Sage — AI-Powered NBA Game Predictor
+# 🏀 NBA Sage – AI-Powered NBA Game Predictor
 
 NBA Sage is a full-stack machine learning system that predicts NBA game outcomes using historical data, real-time statistics, ELO ratings, and automated learning pipelines.
 
-It combines sports analytics, machine learning, and real-time data ingestion into a production-ready application with a modern web interface.
+It combines sports analytics, machine learning, and real-time data ingestion into a production-ready web application.
 
-🚀 What Does NBA Sage Do?
+---
+
+## 🚀 What Does NBA Sage Do?
 
 NBA Sage provides:
 
-✅ Pre-game win probability predictions
+- Pre-game win probability predictions  
+- Live NBA scores with real-time updates  
+- Prediction accuracy tracking over time  
+- MVP race rankings based on live season stats  
+- Championship odds for all 30 NBA teams  
 
-📊 Live NBA scores with real-time updates
+---
 
-📈 Prediction accuracy tracking over time
+## 🧠 How It Works (High Level)
 
-🏆 MVP race rankings based on live season stats
+1. Collects historical NBA data across multiple seasons  
+2. Fetches live game and team data  
+3. Generates advanced features (ELO, rolling stats, rest, momentum)  
+4. Calculates win probabilities  
+5. Stores predictions and tracks results  
 
-🥇 Championship odds for all 30 NBA teams
+**Data Flow**
 
-All predictions are generated automatically using current season data, recent form, and historical performance.
+NBA API → Feature Engineering → Prediction Engine → REST API → React Dashboard
 
-🧠 How It Works (High Level)
-Prediction Pipeline
+---
 
-Collects historical NBA data (23 seasons)
+## 📊 Prediction Methodology
 
-Fetches live data for today’s games
+### Live Prediction Formula
 
-Generates advanced features (ELO, rolling stats, fatigue, momentum)
+Live predictions are generated using a multi-factor statistical model:
 
-Calculates win probabilities
+- 40% Current season win percentage  
+- 30% Recent form (last 10 games)  
+- 20% ELO rating strength  
+- 10% Baseline stabilization  
 
-Stores predictions & results
+**Adjustments**
+- +3.5% home court advantage  
+- −2% per injury impact point  
+- Log5 formula for head-to-head probability  
 
-Tracks accuracy continuously
+This approach prioritizes stability, interpretability, and real-world reliability.
 
-NBA API → Feature Engineering → Prediction Engine → API → React Dashboard
+---
 
-📊 Prediction Methodology
-🧮 Live Game Prediction Formula
+## 🤖 Machine Learning Model
 
-Live predictions currently use a multi-factor statistical model:
+NBA Sage includes a trained machine learning ensemble used for offline training and evaluation.
 
-Factor	Weight
-Current season win %	40%
-Recent form (last 10 games)	30%
-ELO rating strength	20%
-Baseline stabilization	10%
+**Model Type**
+- XGBoost classifier
+- LightGBM classifier
+- 50/50 weighted ensemble
 
-Adjustments applied:
+**Training**
+- Trained on 41,000+ historical NBA games  
+- Time-aware training (no future data leakage)  
+- Automated retraining with accuracy-based rollback  
 
-+3.5% Home court advantage
+---
 
-−2% per injury impact point
+## 🧩 Feature Engineering (Summary)
 
-Log5 formula for head-to-head probability
+- ELO ratings and differentials  
+- Rolling averages (5, 10, 20 games)  
+- Rest days and back-to-back games  
+- Home / away context  
+- Season performance metrics  
+- Momentum and streak indicators  
+- Advanced team stats (OffRtg, DefRtg, Pace)  
+- Clutch and hustle stats  
+- Top player contribution metrics  
+- Era-normalized features (z-score)  
 
-This approach ensures stability, interpretability, and strong real-world performance.
+Total features used: **90+**
 
-🤖 Machine Learning Model (Trained)
+---
 
-NBA Sage also includes a trained ML ensemble, used for offline training and evaluation:
+## 📈 Stats at a Glance
 
-Model Architecture
-Game Features
- ├── XGBoost (50%)
- └── LightGBM (50%)
-        ↓
-   Ensemble Probability
+| Metric | Value |
+|------|------|
+| Seasons covered | 23 (2003–2026) |
+| Games analyzed | 41,000+ |
+| NBA teams | 30 |
+| Features used | 90+ |
+| Prediction tracking | Yes |
+| Auto retraining | Yes |
 
-Training Details
+---
 
-41,000+ historical NBA games
+## 🖥️ Web Application
 
-90+ engineered features
+**Frontend**
+- React 18
+- Vite
+- Custom CSS design system
 
-Time-aware training (no future leakage)
+**Pages**
+- Live Games  
+- Upcoming Predictions  
+- Accuracy Dashboard  
+- MVP Race  
+- Championship Odds  
+- Head-to-Head Comparison  
 
-Automated retraining & rollback if accuracy drops
+---
 
-🔬 The ML model is production-ready and designed to be integrated into live predictions.
+## 🛠️ Tech Stack
 
-🧩 Features Used (Summary)
+**Backend**
+- Python
+- Flask
+- XGBoost
+- LightGBM
+- Pandas, NumPy
+- APScheduler
+- ChromaDB Cloud
 
-ELO ratings & differentials
+**Frontend**
+- React
+- Vite
 
-Rolling averages (5 / 10 / 20 games)
+**Infrastructure**
+- Docker
+- Hugging Face Spaces
+- Git LFS
 
-Rest days & back-to-back games
+---
 
-Home / away context
+## 🔁 Continuous Learning
 
-Season performance metrics
+The system automatically:
 
-Momentum & streak indicators
+1. Ingests completed games  
+2. Updates features  
+3. Retrains the model  
+4. Compares new accuracy with previous versions  
+5. Deploys only if performance improves  
 
-Advanced team stats (OffRtg, DefRtg, Pace)
 
-Clutch & hustle stats
 
-Top player contribution metrics
-
-Era normalization (z-score adjusted)
-
-📈 Accuracy & Stats
-Metric	Value
-Seasons covered	23 (2003–2026)
-Games analyzed	41,000+
-NBA teams	30
-Features used	90+
-Prediction tracking	Yes (ChromaDB)
-Auto retraining	Yes
-
-Accuracy is tracked:
-
-Overall
-
-By confidence level
-
-By team
-
-Over time
-
-🖥️ Web Application
-Frontend
-
-React 18 + Vite
-
-Live dashboards
-
-Modern UI with custom CSS system
-
-Pages
-
-Live Games
-
-Upcoming Predictions
-
-Accuracy Dashboard
-
-MVP Race
-
-Championship Odds
-
-Head-to-Head Comparison
-
-🛠️ Tech Stack
-Backend
-
-Python
-
-Flask
-
-XGBoost
-
-LightGBM
-
-Pandas / NumPy
-
-APScheduler
-
-ChromaDB Cloud
-
-Frontend
-
-React
-
-Vite
-
-Custom CSS
-
-Infrastructure
-
-Docker
-
-Hugging Face Spaces
-
-Git LFS (large data files)
-
-🔁 Continuous Learning System
-
-NBA Sage retrains itself automatically:
-
-Ingests completed games
-
-Updates features
-
-Retrains the model
-
-Compares accuracy
-
-Deploys only if performance improves
-
-This prevents model degradation over time.
-
-
-Why This Project Matters
-
-NBA Sage demonstrates:
-
-Real-world ML system design
-
-Feature engineering at scale
-
-Time-aware modeling
-
-Full-stack ML deployment
-
-Production data pipelines
-
-Continuous learning systems
