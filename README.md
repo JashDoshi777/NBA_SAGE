@@ -4,6 +4,8 @@ NBA Sage is a full-stack machine learning system that predicts NBA game outcomes
 
 It combines sports analytics, machine learning, and real-time data ingestion into a production-ready web application.
 
+live preview: https://jashdoshi77-nba-predictor.hf.space/
+
 ---
 
 ## 🚀 What Does NBA Sage Do?
